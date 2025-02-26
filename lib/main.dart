@@ -11,8 +11,17 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var _currentAssetNum = 0;
-  var _currentAsset = 'assets/nike_air_zoom_pegasus_36.glb';
+  int _currentAssetNum = 0;
+  String _currentAsset = 'assets/nike_air_zoom_pegasus_36.glb';
+  Map<int, String> dictAssets = {
+    0: 'assets/nike_air_zoom_pegasus_36.glb',
+    1: 'assets/revolver.glb',
+    2: 'assets/2005_bmw_m3_e46_gtr_-_nfs_most_wanted.glb',
+    3: 'assets/Astronaut.glb',
+    4: 'assets/excavator_3d_model.glb',
+    5: 'assets/nickelodeon_all-star_brawl_spongebob.glb',
+  };
+
   Key _refreshKey = UniqueKey();
 
   @override
@@ -30,30 +39,11 @@ class _MyAppState extends State<MyApp> {
                 setState(() {
                   _currentAssetNum += 1;
 
-                  if (_currentAssetNum > 5) {
+                  if (_currentAssetNum > dictAssets.length) {
                     _currentAssetNum = 0;
                   }
 
-                  if (_currentAssetNum == 0) {
-                    _currentAsset = 'assets/nike_air_zoom_pegasus_36.glb';
-                  }
-                  if (_currentAssetNum == 1) {
-                    _currentAsset = 'assets/revolver.glb';
-                  }
-                  if (_currentAssetNum == 2) {
-                    _currentAsset =
-                        'assets/2005_bmw_m3_e46_gtr_-_nfs_most_wanted.glb';
-                  }
-                  if (_currentAssetNum == 3) {
-                    _currentAsset = 'assets/Astronaut.glb';
-                  }
-                  if (_currentAssetNum == 4) {
-                    _currentAsset = 'assets/excavator_3d_model.glb';
-                  }
-                  if (_currentAssetNum == 5) {
-                    _currentAsset =
-                        'assets/nickelodeon_all-star_brawl_spongebob.glb';
-                  }
+                  _currentAsset = dictAssets[_currentAssetNum]!;
 
                   _refreshKey = UniqueKey();
                 });
@@ -69,7 +59,8 @@ class _MyAppState extends State<MyApp> {
               '<button class="hotspot" slot="hotspot-hand" data-position="-0.54 0.93 0.1" data-normal="-0.73 0.05 0.69"><div class="annotation"></div>',
           relatedJs: '',
           relatedCss:
-              ".hotspot { display: block; width: 20px; height: 20px; border-radius: 10px; border: none; background-color: blue;box-sizing: b0order-box; pointer-events: none;} .hotspot[slot='hotspot-hand'] { --min-hotspot-opacity: 0; background-color: red;} .annotation { background-color: #888888; position: absolute; transform: translate(10px, 10px); border-radius: 10px; padding: 10px; } :not(:defined)>* { display: none; }",        ),
+              ".hotspot { display: block; width: 20px; height: 20px; border-radius: 10px; border: none; background-color: blue;box-sizing: b0order-box; pointer-events: none;} .hotspot[slot='hotspot-hand'] { --min-hotspot-opacity: 0; background-color: red;} .annotation { background-color: #888888; position: absolute; transform: translate(10px, 10px); border-radius: 10px; padding: 10px; } :not(:defined)>* { display: none; }",
+        ),
       ),
     );
   }
